@@ -48,8 +48,14 @@ export default function LineupGrid({ acts = [] }) {
 
   return (
     <div className="overflow-auto w-full h-[full] border rounded bg-white">
-      <div className="min-w-[1500px] relative grid" style={{ gridTemplateColumns: "100px repeat(56,1fr)" }}>
-        <div className="sticky top-0 bg-white z-10 border-b border-r" style={{ gridColumn: 1, gridRow: 1 }}></div>
+      <div
+        className="min-w-[1500px] relative grid"
+        style={{ gridTemplateColumns: "100px repeat(56,1fr)" }}
+      >
+        <div
+          className="sticky top-0 bg-white z-10 border-b border-r"
+          style={{ gridColumn: 1, gridRow: 1 }}
+        ></div>
         {Array.from({ length: 56 }, (_, i) => {
           const hour = 10 + Math.floor(i / 4);
           const minute = (i % 4) * 15;
@@ -92,15 +98,18 @@ export default function LineupGrid({ acts = [] }) {
           stagesMap[stageName].map((act, index) => {
             const start = timeToMinutes(act.start);
             const end = timeToMinutes(act.end);
-            const colStart = Math.floor(((start - startTime) / totalMinutes) * 56) + 2;
-            const colEnd = Math.ceil(((end - startTime) / totalMinutes) * 56) + 2;
+            const colStart =
+              Math.floor(((start - startTime) / totalMinutes) * 56) + 2;
+            const colEnd =
+              Math.ceil(((end - startTime) / totalMinutes) * 56) + 2;
             const row = stageIdx + 2;
-            const key = stageName + "-" + (act.artist || act.name || index) + "-" + index;
+            const key =
+              stageName + "-" + (act.artist || act.name || index) + "-" + index;
 
             return (
               <React.Fragment key={key}>
                 <div
-                  className="bg-blue-500 text-white text-sm flex items-center justify-center gap-2 rounded border-2 border-black"
+                  className="bg-red-500 text-white text-sm flex items-center justify-center gap-2 rounded border-2 border-black"
                   style={{
                     gridColumn: `${colStart} / ${colEnd}`,
                     gridRow: row,
@@ -111,7 +120,13 @@ export default function LineupGrid({ acts = [] }) {
                   <span>{act.artist || act.name}</span>
                   <button
                     onClick={() => toggleHeart(key)}
-                    style={{ background: "none", border: "none", cursor: "pointer", fontSize: "1.2em", lineHeight: 1 }}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      fontSize: "1.2em",
+                      lineHeight: 1,
+                    }}
                     aria-label="Toggle favorite"
                     tabIndex={0}
                   >
@@ -119,7 +134,13 @@ export default function LineupGrid({ acts = [] }) {
                   </button>
                   <button
                     onClick={() => toggleInfo(key)}
-                    style={{ background: "none", border: "none", cursor: "pointer", fontSize: "1.2em", lineHeight: 1 }}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      fontSize: "1.2em",
+                      lineHeight: 1,
+                    }}
                     aria-label="Meer info"
                     tabIndex={0}
                   >
@@ -127,29 +148,45 @@ export default function LineupGrid({ acts = [] }) {
                   </button>
                 </div>
                 {infoOpen[key] && (
-                  <div
-                    className="bg-white text-black text-xs border border-blue-500 rounded shadow p-2 absolute w-72"
-                    style={{
-                      gridColumn: `${colStart} / ${colEnd}`,
-                      gridRow: row + 1,
-                      zIndex: 40,
-                    }}
-                  >
-                    <div><b>Artiest:</b> {act.artist || act.name}</div>
-                    <div><b>Tijd:</b> {act.start} - {act.end}</div>
-                    {act.description && (
-                      <div className="mt-2"><b>Beschrijving:</b> {act.description}</div>
-                    )}
-                    {act.image && (
-                      <div className="mt-2">
-                        <img src={act.image} alt={act.artist || act.name} className="w-full h-32 object-cover rounded" />
-                      </div>
-                    )}
-                    {act.video && (
-                      <div className="mt-2">
-                        <video src={act.video} controls className="w-full h-32 rounded" />
-                      </div>
-                    )}
+                  <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+                    <div className="bg-white rounded-2xl shadow-2xl max-w-xl w-full p-6 relative">
+                      <button
+                        onClick={() => toggleInfo(key)}
+                        className="absolute top-3 right-4 text-2xl font-bold text-gray-500 hover:text-gray-800"
+                        aria-label="Sluit info"
+                      >
+                        ❌
+                      </button>
+                      <h2 className="text-xl font-bold mb-2">
+                        {act.artist || act.name}
+                      </h2>
+                      <p className="text-sm text-gray-700 mb-1">
+                        <b>Tijd:</b> {act.start} - {act.end}
+                      </p>
+
+                      {act.description && (
+                        <p className="text-sm text-gray-600 mt-2 mb-2">
+                          <b>Beschrijving:</b> {act.description}
+                        </p>
+                      )}
+
+                      {act.image && (
+                        <img
+                          src={act.image}
+                          alt={act.artist || act.name}
+                          className="w-32 h-32 object-cover rounded-full mb-4 mx-auto border-4 border-red-200 shadow"
+                          style={{ display: "block" }}
+                        />
+                      )}
+
+                      {act.video && (
+                        <video
+                          src={act.video}
+                          controls
+                          className="w-full h-64 rounded"
+                        />
+                      )}
+                    </div>
                   </div>
                 )}
               </React.Fragment>

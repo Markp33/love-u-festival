@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import LogoBlack from '../assets/LogoBlack.png';
+import { useTranslation } from 'react-i18next';
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
+  const { t } = useTranslation();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -34,7 +36,7 @@ export default function Home() {
       </div>
 
       <p className="text-center text-black text-lg mt-6">
-        Zaterdag 6 september 2025
+        {t('homedate')}
       </p>
 
       <button className="mt-4 w-64 py-2 bg-gray-200 text-black text-lg rounded-md cursor-default">
@@ -44,7 +46,7 @@ export default function Home() {
       </button>
 
       <button className="mt-4 w-64 py-2 bg-red-600 text-white text-lg rounded-full font-bold">
-        ZIE HIER JE TICKET
+        {t('ticket')}
       </button>
     </div>
   );

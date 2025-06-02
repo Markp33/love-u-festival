@@ -7,6 +7,9 @@ import Home from './pages/home'
 import Event from './pages/Event'
 import More from './pages/More'
 import Map from './pages/Map'
+import LanguageSwitcher from "./components/LanguageSwitcher";
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router'
 
 import LogoBlack from './assets/LogoBlack.png'
 
@@ -15,13 +18,18 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <Home />
-      <Map />
-      <Event />
-      <More />
+      <Router>
+        <Navbar />
+        <LanguageSwitcher />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/event" element={<Event />} />
+          <Route path="/more" element={<More />} />
+          <Route path="/map" element={<Map />} />
+        </Routes>
+      </Router>
       
-      <img src={LogoBlack} alt="Logo" className="w-32 mx-auto my-4" />
+      
     </>
   )
 }
