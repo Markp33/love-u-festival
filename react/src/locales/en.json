@@ -29,5 +29,12 @@
   "glu": "Golden-GLU",
   "gluInfo": "Students from GLU have special privileges during the festival and are recognizable by a golden wristband. They can use golden toilets and express lanes at the bar marked with gold.",
   "homedate": "Saturday 6 September 2025",
-  "ticket": "See here your ticket"
+  "ticket": "See here your ticket",
+  "news": "Latest news",
+  "news1_title": "Headliner announced",
+  "news1_text": "The main act for Saturday is revealed: DJ Supernova is coming to the festival!",
+  "news2_title": "New food trucks",
+  "news2_text": "This year we have new food trucks with vegan, BBQ, and Japanese street food!",
+  "news3_title": "Shuttle buses available",
+  "news3_text": "Special transport from Utrecht and Amsterdam. Book your ride now."
 }

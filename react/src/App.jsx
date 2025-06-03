@@ -19,7 +19,7 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar />
+        
         <LanguageSwitcher />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -27,6 +27,7 @@ function App() {
           <Route path="/more" element={<More />} />
           <Route path="/map" element={<Map />} />
         </Routes>
+        <Navbar />
       </Router>
       
       
