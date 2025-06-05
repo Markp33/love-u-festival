@@ -24,6 +24,7 @@ function AccordionItem({ title, children }) {
 export default function More() {
   const { t } = useTranslation();
 
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-200 via-red-100 to-yellow-100 flex flex-col items-center justify-center px-4">
       <div className="bg-white rounded-lg shadow-lg p-8 max-w-2xl w-full mt-12 mb-12 overflow-y-auto">

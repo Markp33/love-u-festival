@@ -22,6 +22,7 @@ export default function LanguageSwitcher() {
           className="w-8 h-6 hover:scale-110 transition-transform"
         />
       </button>
+
     </div>
   );
 }

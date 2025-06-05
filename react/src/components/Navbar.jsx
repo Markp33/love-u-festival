@@ -8,7 +8,9 @@ const Navbar = () => {
       <Link to="/event" className="material-icons-round text-red-700">event</Link>
       <Link to="/more" className="material-icons-round text-red-700">more_horiz</Link>
     </nav>
+    
   );
+  
 };
 
 export default Navbar;
