@@ -7,7 +7,7 @@ import {
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { Link, useNavigate } from "react-router"; // <-- use 'react-router' for Link
+import { Link } from "react-router";
 
 const createIcon = (filename, size = [40, 40]) =>
   L.icon({
@@ -17,9 +17,8 @@ const createIcon = (filename, size = [40, 40]) =>
     popupAnchor: [0, -size[1]],
   });
 
-
 const icons = {
-  entrance: createIcon('marker_entrance_exit.svg', [100, 100]),
+  entrance: createIcon("marker_entrance_exit.svg", [100, 100]),
   locker: createIcon("marker_locker.svg"),
   stage1: createIcon("marker_stage1_ponton.svg"),
   stage2: createIcon("marker_stage2_the_lake.svg"),
@@ -174,13 +173,6 @@ const attractions = [
   },
 ];
 
-
-const customIcon = new L.Icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
-  iconSize: [30, 30],
-  iconAnchor: [15, 30],
-});
-
 function ResetView({ center }) {
   const map = useMap();
   map.setView(center, 1);
@@ -193,9 +185,7 @@ export default function Map() {
     [980, 1680],
   ];
   const defaultCenter = [490, 840];
-  const navigate = useNavigate();
 
-  // Helper to check if marker is a stage
   const isStage = (name) =>
     ["Stage 1", "Stage 2", "Stage 3", "Stage 4"].includes(name);
 
@@ -248,6 +238,20 @@ export default function Map() {
           </Marker>
         ))}
       </MapContainer>
+      <img
+        src="/map/marker_legenda.svg"
+        alt="Legenda"
+        style={{
+          position: "absolute",
+          bottom: "10px",
+          right: "10px",
+          width: "135px",
+          zIndex: 999,
+          backgroundColor: "white",
+          borderRadius: "8px",
+          padding: "8px",
+        }}
+      />
     </div>
   );
 }
