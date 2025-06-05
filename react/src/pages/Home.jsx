@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import LogoBlack from "../assets/LogoBlack.png";
 import { useTranslation } from "react-i18next";
 import Confetti from "react-confetti";
+import { Link } from "react-router"; // Add this import at the top
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
@@ -64,20 +65,20 @@ export default function Home() {
           {t("news")}
         </h2>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
-          <h3 className="text-xl font-semibold mb-2">{t("news1_title")}</h3>
+        <Link to="/more" className="block bg-white dark:bg-gray-800 rounded-lg shadow p-4 hover:ring-2 hover:ring-red-400 transition">
+          <h3 className="text-xl font-semibold mb-2 text-white">{t("news1_title")}</h3>
           <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{t("news1_text")}</p>
-        </div>
+        </Link>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
-          <h3 className="text-xl font-semibold mb-2">{t("news2_title")}</h3>
+        <Link to="/more" className="block bg-white dark:bg-gray-800 rounded-lg shadow p-4 hover:ring-2 hover:ring-red-400 transition">
+          <h3 className="text-xl font-semibold mb-2 text-white">{t("news2_title")}</h3>
           <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{t("news2_text")}</p>
-        </div>
+        </Link>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
-          <h3 className="text-xl font-semibold mb-2">{t("news3_title")}</h3>
+        <Link to="/more" className="block bg-white dark:bg-gray-800 rounded-lg shadow p-4 hover:ring-2 hover:ring-red-400 transition">
+          <h3 className="text-xl font-semibold mb-2 text-white">{t("news3_title")}</h3>
           <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{t("news3_text")}</p>
-        </div>
+        </Link>
       </div>
     </div>
   );
